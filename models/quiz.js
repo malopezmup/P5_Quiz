@@ -20,8 +20,8 @@ module.exports = function (sequelize, DataTypes) {
 	});
 };
 
-// exports.create = (quiz) =>{};
-// exports.create = (quiz) =>{};
-// exports.findAll = () =>quizzes;
-// exports.findById = (id) =>{};
-// exports.destroy = (quiz) =>{};
+exports.create = (quiz) =>{};
+exports.create = (quiz) =>{};
+exports.findAll = () =>quizzes;
+exports.findById = (id) =>{};
+exports.destroy = (quiz) =>{};

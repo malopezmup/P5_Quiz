@@ -4,11 +4,11 @@ const quizController = require('../controllers/quiz');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Quiz' });
+  res.render('index',{title:'Quiz'});
 });
 
 router.get('/credits', function(req, res, next) {
-  res.render('credits', { title: 'Quiz' });
+  res.render('credits',{title:'Quiz'});
 });
 
 router.param('quizId', quizController.load);

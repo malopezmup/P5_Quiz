@@ -10,7 +10,7 @@ var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
 
 var index = require('./routes/index');
-
+var users = require('./routes/users');
 
 var app = express();
 
@@ -29,6 +29,7 @@ app.use(methodOverride('_method', {methods: ["POST","GET"]}));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
+app.use('/users',users);
 
 
 // catch 404 and forward to error handler

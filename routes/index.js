@@ -1,8 +1,6 @@
 var express = require('express');
 var router = express.Router();
 const quizController = require('../controllers/quiz');
-const app = require('../../app');
-const http = require('http').createServer(app).listen(3000);
 
 /* GET home page. */
 router.get('/', function(req, res, next) {

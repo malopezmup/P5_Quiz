@@ -2,6 +2,20 @@ const Sequelize = require ("sequelize");
 const {models} = require("../models");
 
 
+exports.load = (req, res, next, quizId)=>{
+
+	models.quiz.findById(quizId)
+	.then(quiz => {
+		if(quiz){
+			req.quiz=quiz;
+			next();
+		}else{
+			throw new Error ('There is no quiz with id=' + quizId);
+		}
+	})
+	.catch(error=> next(error));
+};
+
 exports.index=(req, res, next)=>{
 
 	models.quiz.findAll()
@@ -18,9 +32,14 @@ exports.show=(req, res, next)=>{
 	res.render('quizzes/show', {quiz});
 	
 };
-exports.new=(req, res, next)=>{
-	const quizzes = models.quiz.findAll();
-	res.render('quizzes/index.ejs', {quizzes});
+exports.new = (req, res, next) => {
+
+    const quiz = {
+        question: "",
+        answer:""
+    };
+
+    res.render('quizzes/new', {quiz});
 };
 
 
@@ -99,16 +118,3 @@ exports.check=(req, res, next)=>{
 };
 
 
-exports.load = (req, res, next, quizId)=>{
-
-	models.quiz.findById(quizId)
-	.then(quiz => {
-		if(quiz){
-			req.quiz=quiz;
-			next();
-		}else{
-			throw new Error ('There is no quiz with id=' + quizId);
-		}
-	})
-	.catch(error=> next(error));
-};
